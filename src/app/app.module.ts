@@ -3,10 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ServerComponent } from './server/server.component';
+import { WarningAlertComponent } from './warning-alert/warning-alert.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
+import { SearchBarComponent } from './shared-components/search-bar/search-bar.component';
+import { CategoryListComponent } from './home/category-list/category-list.component';
+import { CategoryItemComponent } from './home/category-list/category-item/category-item.component';
+import { HairPageComponent } from './hair-page/hair-page.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ServerComponent,
+    WarningAlertComponent,
+    HomeComponent,
+    HeaderComponent,
+    CategoryListComponent,
+    CategoryItemComponent,
+    SearchBarComponent,
+    HairPageComponent
+    
   ],
   imports: [
     BrowserModule,

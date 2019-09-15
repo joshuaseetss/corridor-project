@@ -1,0 +1,26 @@
+h1 {
+    font-family: 'Fjord One', serif;
+    color: white; 
+}
+navbar-color {
+    background: transparent;
+}
+.navbar-nav > li{
+    margin-left:10px;
+    margin-right:10px;
+  }
+
+@media (min-width: 768px) {
+.navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+    padding-top: 20px;
+}
+.navbar-right {
+    float: right!important;
+    margin-right: -15px;
+    margin: 20px; 
+}
+}
