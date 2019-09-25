@@ -1,6 +1,10 @@
 h1 {
     font-family: 'Fjord One', serif;
-    color: white; 
+    color: black; 
+}
+a{
+    text-decoration: none; 
+    color: black; 
 }
 navbar-color {
     background: transparent;
@@ -23,4 +27,12 @@ navbar-color {
     margin-right: -15px;
     margin: 20px; 
 }
+}
+
+.navbar {
+    background-color: #FEFFB7;
+}
+
+.btn {
+    border: 1px solid black !important; 
 }

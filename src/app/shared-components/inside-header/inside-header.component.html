@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+                    <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+                </button>
+                <h1 class="header"><a routerLink="/">Corridor </a></h1>
+            </div>
+    
+            <div class="collapse navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> Home Services </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"> Login </button>
+                    </li>
+                </ul>
+    
+            </div>
+            <!-- <ul class="navbar-nav justify-content-end" id="nav-content"> 
+                    <li class="nav-item">
+                            
+                        </li>
+                    </ul> -->
+        </div>
+    </nav>
