@@ -1,1 +1,26 @@
-<p>business-card works!</p>
+<div class="{{ wrapperCssClass }}">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <img 
+                class="img-responsive"
+                [src]="businessCard.imageUrl" 
+                [alt]="businessCard.name" />
+        </div>
+        <div class="col-xs-12 col-sm-8 info-wrapper">
+            <h3>{{ businessCard.name }}</h3>
+            <h5>{{ businessCard.location }}</h5>
+            <h5>{{ businessCard.postalCode }}</h5>
+            <div class="ratings-reviews-wrapper">
+                <star-rating 
+                    value="{{ businessCard.rating }}" 
+                    checkedcolor="orange" 
+                    uncheckedcolor="lightgray" 
+                    size="20px"
+                    readonly=true>
+                </star-rating>
+                <span class="no-of-reviews">({{ businessCard.noOfReviews }})</span>
+            </div>
+            <h6>{{ businessCard.description }}</h6>
+        </div>
+    </div>
+</div>

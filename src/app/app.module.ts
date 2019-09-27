@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RatingModule } from 'ng-starrating';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { CategoryListComponent } from './home/category-list/category-list.compon
 import { CategoryItemComponent } from './home/category-list/category-item/category-item.component';
 import { HairPageComponent } from './hair-page/hair-page.component';
 import { InsideHeaderComponent } from './shared-components/inside-header/inside-header.component';
-import { BusinessCardComponent } from './shared-components/business-card/business-card.component'
+import { BusinessCardComponent } from './shared-components/business-card/business-card.component';
+import { BusinessCardDetailComponent } from './shared-components/business-card-detail/business-card-detail.component'
 
 
 
@@ -28,13 +30,15 @@ import { BusinessCardComponent } from './shared-components/business-card/busines
     SearchBarComponent,
     HairPageComponent,
     InsideHeaderComponent,
-    BusinessCardComponent
+    BusinessCardComponent,
+    BusinessCardDetailComponent
 
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

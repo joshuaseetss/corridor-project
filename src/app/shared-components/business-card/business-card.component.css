@@ -1,0 +1,36 @@
+.business-card-wrapper {
+    background-color: white;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    font-family: 'Fjord One', serif;
+    cursor: pointer;
+}
+
+.business-card-wrapper img {
+    margin: 10px 0 10px 20px;
+}
+
+.business-card-wrapper .info-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.business-card-wrapper .info-wrapper h3 {
+    margin-top: 5px;
+}
+
+.business-card-wrapper .info-wrapper h5 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.business-card-wrapper .info-wrapper .ratings-reviews-wrapper star-rating {
+    display: inline-block;
+}
+
+.business-card-wrapper .info-wrapper .ratings-reviews-wrapper .no-of-reviews {
+    margin-left: 5px;
+    display: inline-block;
+}

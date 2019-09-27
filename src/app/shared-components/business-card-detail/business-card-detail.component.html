@@ -1,0 +1,106 @@
+<div class="business-card-detail-wrapper">
+    <app-inside-header></app-inside-header>
+    <div class="container info-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <h3>{{ businessCard.name }}</h3>
+                <div class="ratings-reviews-wrapper">
+                    <star-rating 
+                        value="{{ businessCard.rating }}" 
+                        checkedcolor="orange" 
+                        uncheckedcolor="lightgray" 
+                        size="20px"
+                        readonly="true">
+                    </star-rating>
+                    <span class="no-of-reviews">({{ businessCard.noOfReviews }})</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <h4><strong>Avg price: {{ businessCard.avgPricePerPax }}/ pax</strong></h4>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <button type="button" class="message-btn">Message</button>
+            </div>
+        </div>
+        <div class="row imgs-wrapper">
+            <div class="img-wrapper">
+                <img 
+                    *ngFor="let imageUrl of businessCard.images"
+                    [src]="imageUrl" />
+            </div>
+        </div>
+        <div class="row other-info">
+            <div class="col-xs-12 col-sm-9">
+                <div class="about-info">
+                    <h4><strong>About</strong></h4>
+                    <p>{{ businessCard.description }}</p>
+                </div>
+                <div class="services">
+                    <h4><strong>Services Available</strong></h4>
+                    <div class="services-list">
+                        <div 
+                            *ngFor="let service of businessCard.services"
+                            class="service row">
+                            <div class="col-xs-8"><strong>{{ service.name }}</strong></div>
+                            <div class="col-xs-4">SGD {{ service.price }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews">
+                    <div class="row r-header">
+                        <div class="col-xs-6">
+                            <h4><strong>Reviews</strong></h4>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button type="button" class="review-btn">Leave a Review</button>
+                        </div>
+                    </div>
+                    <div 
+                        *ngFor="let review of businessCard.reviews"
+                        class="row review">
+                        <div class="col-xs-10">
+                            <star-rating 
+                                value="{{ review.rating }}" 
+                                checkedcolor="orange" 
+                                uncheckedcolor="lightgray" 
+                                size="20px"
+                                readonly="true">
+                            </star-rating>
+                            <span class="reviewer">{{ review.reviewer }}</span>
+                        </div>
+                        <div class="col-xs-2 text-right">{{ review.date }}</div>
+                        <div class="col-xs-12">{{ review.reviewText }}</div>
+                        <div class="col-xs-3">
+                            <img 
+                                [src]="review.imageUrl"
+                                class="img-responsive"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <div class="address-info">
+                    <div>
+                        <h4><strong>Address</strong></h4>
+                        <p>{{ businessCard.location }}{{ businessCard.postalCode }}</p>
+                    </div>
+                    <div>
+                        <h4><strong>Number</strong></h4>
+                        <div class="row">
+                            <div class="col-xs-5 text-center"><p>{{ businessCard.phoneNo }}</p></div>
+                            <div class="col-xs-7"><button type="button" class="message-btn">Message</button></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4><strong>Opening Hours</strong></h4>
+                        <div
+                            *ngFor="let openingHr of businessCard.openingHrs">
+                            {{ openingHr.day }}:{{ openingHr.hrs }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
