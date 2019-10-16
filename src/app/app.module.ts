@@ -14,7 +14,13 @@ import { CategoryItemComponent } from './home/category-list/category-item/catego
 import { HairPageComponent } from './hair-page/hair-page.component';
 import { InsideHeaderComponent } from './shared-components/inside-header/inside-header.component';
 import { BusinessCardComponent } from './shared-components/business-card/business-card.component';
-import { BusinessCardDetailComponent } from './shared-components/business-card-detail/business-card-detail.component'
+import { BusinessCardDetailComponent } from './shared-components/business-card-detail/business-card-detail.component';
+import { SignUpPageComponent } from './sign-up-service-page/sign-up-page/sign-up-page.component';
+import { ServiceHeaderComponent } from './shared-components/service-header/service-header.component';
+import { BasicInfoPageComponent } from './sign-up-service-page/basic-info-page/basic-info-page.component';
+import { SignUpPhotosPageComponent } from './sign-up-service-page/sign-up-photos-page/sign-up-photos-page.component';
+import { PriceServicePageComponent } from './sign-up-service-page/price-service-page/price-service-page.component';
+import { LoginPageComponent } from './login-page/login-page/login-page.component';
 
 
 
@@ -31,9 +37,15 @@ import { BusinessCardDetailComponent } from './shared-components/business-card-d
     HairPageComponent,
     InsideHeaderComponent,
     BusinessCardComponent,
-    BusinessCardDetailComponent
+    BusinessCardDetailComponent,
+    SignUpPageComponent,
+    ServiceHeaderComponent,
+    BasicInfoPageComponent,
+    SignUpPhotosPageComponent,
+    PriceServicePageComponent,
+    LoginPageComponent
 
-    
+
   ],
   imports: [
     BrowserModule,

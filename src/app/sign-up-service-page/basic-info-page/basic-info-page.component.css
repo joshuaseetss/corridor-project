@@ -1,0 +1,19 @@
+.btn {
+  background-color: #FFB1B1;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Fjord One', serif;
+  cursor: pointer;
+  box-align: middle;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+h3 {
+  font-family: 'Fjord One', serif;
+  text-align: center;
+}
