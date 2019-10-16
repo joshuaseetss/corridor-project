@@ -1,0 +1,26 @@
+h1 {
+  font-family: 'Fjord One', serif;
+  color: black;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+navbar-color {
+  background: transparent;
+}
+
+.navbar {
+  background-color: #FEFFB7;
+}
+
+.btn {
+  border: 1px solid black !important;
+}
+
+.header {
+  text-align: center;
+}
+.container {
+  margin-top: 30px;
+}
