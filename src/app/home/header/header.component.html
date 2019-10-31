@@ -1,14 +1,31 @@
 <nav class="navbar navbar-expand bg-transparent">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
-                <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
-            </button>
+            <div id="wrapper" [class]="wrapperClasses">
+                <div [class]="overlayClasses"></div>
+
+                <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                    <ul class="nav sidebar-nav">
+                        <li><a routerLink="./sign-up-page">Sign Up</a></li>
+                        <li><a routerLink="./login-page">Login</a></li>
+                    </ul>
+                </nav>
+
+                <button 
+                    type="button" 
+                    (click)="hamburgerClick()" 
+                    [class]="hamburgerClasses">
+                    <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                </button>
+            </div>
+
             <h1 class="header"> Corridor </h1>
         </div>
 
 
-        <div class="collapse navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+        <div class="collapse navbar-collapse hidden-xs">
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item"
                     routerLink="./sign-up-page">
