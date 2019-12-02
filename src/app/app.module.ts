@@ -21,6 +21,10 @@ import { BasicInfoPageComponent } from './sign-up-service-page/basic-info-page/b
 import { SignUpPhotosPageComponent } from './sign-up-service-page/sign-up-photos-page/sign-up-photos-page.component';
 import { PriceServicePageComponent } from './sign-up-service-page/price-service-page/price-service-page.component';
 import { LoginPageComponent } from './login-page/login-page/login-page.component';
+import { CustomerLoginPageComponent } from './customer-login/customer-login-page/customer-login-page.component';
+import { CustomerSignUpPageComponent } from './customer-sign-up/customer-sign-up-page/customer-sign-up-page.component';
+import { CustomerProfilePageComponent } from './customer-sign-up/customer-profile-page/customer-profile-page.component';
+import { HomeBusinessLandingPageComponent } from './sign-up-service-page/home-business-landing-page/home-business-landing-page.component';
 
 
 
@@ -43,7 +47,11 @@ import { LoginPageComponent } from './login-page/login-page/login-page.component
     BasicInfoPageComponent,
     SignUpPhotosPageComponent,
     PriceServicePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    CustomerLoginPageComponent,
+    CustomerSignUpPageComponent,
+    CustomerProfilePageComponent,
+    HomeBusinessLandingPageComponent
 
 
   ],
