@@ -36,3 +36,37 @@ navbar-color {
 .btn {
     border: 1px solid black !important; 
 }
+
+.search-bar-wrapper {
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 200px;
+}
+
+.search-bar-wrapper .search-input,
+.search-bar-wrapper .search-input-2 {
+    border: 1px solid white;
+    box-shadow: none;
+    font-size: 15px;
+}
+
+.search-bar-wrapper .search-input {
+    width: 60%;
+}
+
+.search-bar-wrapper .search-input-2 {
+    border-left: 1px solid lightgray;
+    width: 30%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-bar-wrapper .search-btn {
+    background-color: #FFB1B1;
+    border: 1px solid #FFB1B1 !important;
+    font-size: 15px;
+    display: inline-block;
+    width: 10%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
