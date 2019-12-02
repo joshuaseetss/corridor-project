@@ -1,3 +1,7 @@
+import { HomeBusinessLandingPageComponent } from './sign-up-service-page/home-business-landing-page/home-business-landing-page.component';
+import { CustomerProfilePageComponent } from './customer-sign-up/customer-profile-page/customer-profile-page.component';
+import { CustomerSignUpPageComponent } from './customer-sign-up/customer-sign-up-page/customer-sign-up-page.component';
+import { CustomerLoginPageComponent } from './customer-login/customer-login-page/customer-login-page.component';
 import { LoginPageComponent } from './login-page/login-page/login-page.component';
 import { PriceServicePageComponent } from './sign-up-service-page/price-service-page/price-service-page.component';
 import { SignUpPhotosPageComponent } from './sign-up-service-page/sign-up-photos-page/sign-up-photos-page.component';
@@ -17,7 +21,11 @@ const routes: Routes = [
   { path: 'basic-info-page', component: BasicInfoPageComponent },
   { path: 'sign-up-photo', component: SignUpPhotosPageComponent },
   { path: 'price-service', component: PriceServicePageComponent },
-  { path: 'login-page', component: LoginPageComponent }
+  { path: 'login-page', component: LoginPageComponent },
+  { path: 'customer-login', component: CustomerLoginPageComponent },
+  { path: 'customer-sign-up', component: CustomerSignUpPageComponent },
+  { path: 'customer-profile', component: CustomerProfilePageComponent },
+  { path: 'home-business-landing-page', component: HomeBusinessLandingPageComponent }
 ];
 
 @NgModule({
