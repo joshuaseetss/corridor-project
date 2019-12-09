@@ -38,15 +38,14 @@ export class HairPageComponent implements OnInit {
       'openingHrs'
     ];
     businessCardsData.forEach(businessCard => {
-      let newBusinessCard = new BusinessCard(); //create a new business card model object
+      let newBusinessCard = new BusinessCard();
       fieldsToPopulate.forEach(fieldToPopulate => {
         newBusinessCard[fieldToPopulate] = businessCard[fieldToPopulate];
       });
-      that.businessCards.push(newBusinessCard); //pushing the current business card into the array of business cards
+      that.businessCards.push(newBusinessCard);
     });
   }
 
-  //navigate to the particular business page of the business card
   goToBusinessCardDetail(index: number) {
     localStorage.setItem('businessCardDetailObject', JSON.stringify(this.businessCards[index]));
     this.router.navigate(['/business-card-detail']);

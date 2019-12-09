@@ -1,0 +1,51 @@
+h1 {
+  font-family: 'Fjord One', serif;
+  color: black;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+navbar-color {
+  background: transparent;
+}
+.navbar-nav > li{
+  margin-left:10px;
+  margin-right:10px;
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+    padding-top: 20px;
+  }
+  .navbar-right {
+    float: right!important;
+    margin-right: -15px;
+    margin: 20px;
+  }
+}
+
+.navbar {
+  background-color: #FFB1B1;
+}
+
+.btn {
+  background-color: #FEFFB7;
+  border:1px solid;
+  color:black;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Fjord One', serif;
+  cursor: pointer;
+  box-align: middle;
+}
+
+.message {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
