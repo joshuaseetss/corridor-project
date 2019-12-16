@@ -8,12 +8,23 @@
             <div>
               <h3>Photos</h3>
             </div>
-            <form>
+            <form [formGroup]="signupPhotosForm" (ngSubmit)="signupNext()">
               <div id="user-data">
                 <div class="form-group">
                   <label for="Name">Portfolio
-                      <span class="required">*</span>
+                    <span class="required">*</span>
                   </label>
+                  <button class="btn btn-primary image-upload-button" (click)="fileUpload.click()" type="button">Upload Image</button>
+                  <input type="file" #fileUpload (change)="onImageUpload($event)">
+                </div>
+                <div class="portfolio-wrapper row">
+                  <div class="portfolio col-sm-3" *ngFor="let img of portfolio; let i = index">
+                    <img [src]="img.url" [alt]="img.name" >
+                    <button class="btn btn-primary delete-button" (click)="deleteImage(i)">Delete</button>
+                  </div>
+                </div>
+                <div class="error row" *ngIf="maxImageError">
+                  * Maximum 4 images can be uploaded.
                 </div>
                 <div class="form-group">
                   <label for="address">Environment
@@ -22,7 +33,7 @@
                 </div>
               </div>
               <div>
-              <button class="btn btn-primary" type="submit" routerLink="/price-service">Next</button>
+              <button class="btn btn-primary" type="submit">Next</button>
             </div>
             </form>
           </div>
