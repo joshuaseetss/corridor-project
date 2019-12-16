@@ -25,9 +25,8 @@ import { CustomerLoginPageComponent } from './customer-login/customer-login-page
 import { CustomerSignUpPageComponent } from './customer-sign-up/customer-sign-up-page/customer-sign-up-page.component';
 import { CustomerProfilePageComponent } from './customer-sign-up/customer-profile-page/customer-profile-page.component';
 import { HomeBusinessLandingPageComponent } from './sign-up-service-page/home-business-landing-page/home-business-landing-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
@@ -53,15 +52,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomerSignUpPageComponent,
     CustomerProfilePageComponent,
     HomeBusinessLandingPageComponent
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RatingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

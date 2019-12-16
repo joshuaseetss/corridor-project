@@ -2,31 +2,3 @@ h3 {
   font-family: 'Fjord One', serif;
   text-align: center;
 }
-
-input[type='file'] {
-  visibility: hidden;
-}
-
-.image-upload-button {
-  margin-left: 1rem;
-}
-
-.portfolio-wrapper img {
-  max-width: 100%;
-  height: 10rem;
-}
-
-.portfolio {
-  text-align: center;
-}
-
-.delete-button {
-  margin-top: 2rem;
-}
-
-.error {
-  margin-top: 2rem;
-  color: #ff0000;
-  font-weight: bold;
-  text-align: center;
-}
