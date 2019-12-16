@@ -8,7 +8,7 @@
             <div>
               <h3>Services</h3>
             </div>
-            <form>
+            <form [formGroup]="signupForm" (ngSubmit)="singupNext()">
               <div id="user-data">
                 <div class="form-group">
                   <label for="Name">Service 1
