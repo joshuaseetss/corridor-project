@@ -6,31 +6,31 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h3>Sign Up</h3>
-        <form>
+        <form [formGroup]="signupForm" (ngSubmit)="signupNext()">
           <div id="user-data">
             <div class="form-group">
               <label for="firstname">First Name
                   <span class="required">*</span>
               </label>
-              <input type="text" placeholder="Enter First Name" id="firstname" class="form-control">
+              <input type="text" placeholder="Enter First Name" id="firstname" class="form-control" formControlName="firstName">
             </div>
             <div class="form-group">
               <label for="lastname">Last Name
                   <span class="required">*</span>
               </label>
-              <input type="text" placeholder="Enter Last Name" id="lastname" class="form-control">
+              <input type="text" placeholder="Enter Last Name" id="lastname" class="form-control" formControlName="lastName">
             </div>
             <div class="form-group">
               <label for="email">Email Address
                   <span class="required">*</span>
               </label>
-              <input type="email" placeholder="Enter Email" id="email" class="form-control">
+              <input type="email" placeholder="Enter Email" id="email" class="form-control" formControlName="email">
             </div>
             <div class="form-group">
               <label for="password">Password
                   <span class="required">*</span>
               </label>
-              <input type="password" placeholder="Enter Password" id="password" class="form-control">
+              <input type="password" placeholder="Enter Password" id="password" class="form-control" formControlName="password">
             </div>
             <div class="form-group">
               <label for="confirmpassword">Confirm Password
@@ -45,7 +45,7 @@
           <br>
           <div>
           </div>
-            <button class="btn btn-primary" type="submit" routerLink="/basic-info-page" >Sign Up</button>
+            <button class="btn btn-primary" type="submit">Sign Up</button>
         </form>
       </div>
     </div>
