@@ -28,6 +28,7 @@ import { HomeBusinessLandingPageComponent } from './sign-up-service-page/home-bu
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BusinessHeaderComponent } from './shared-components/business-header/business-header.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomerLoginPageComponent,
     CustomerSignUpPageComponent,
     CustomerProfilePageComponent,
-    HomeBusinessLandingPageComponent
+    HomeBusinessLandingPageComponent,
+    BusinessHeaderComponent
   ],
   imports: [
     BrowserModule,
