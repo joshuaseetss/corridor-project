@@ -18,7 +18,8 @@ export class CustomerSignUpPageComponent implements OnInit {
       lastName: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required, Validators.email]),
       phone: new FormControl('',[Validators.required]),
-      password: new FormControl('',[Validators.required])
+      password: new FormControl('',[Validators.required]),
+      confirmPassword: new FormControl('',[Validators.required])
     });
   }
 
@@ -30,6 +31,8 @@ export class CustomerSignUpPageComponent implements OnInit {
       phone: this.signupForm.get('phone').value,
       password: this.signupForm.get('password').value
     };
-    this.authService.customerSignup(data);
+    this.authService.customerSignup(data).subscribe((response) => {
+      console.log(response);
+    });
   }
 }

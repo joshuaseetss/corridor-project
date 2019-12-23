@@ -1,5 +1,5 @@
 <div>
-  <app-business-header></app-business-header>
+  <app-service-header></app-service-header>
 </div>
 <div>
     <div class="container">
@@ -8,17 +8,17 @@
             <div>
               <h3>Services</h3>
             </div>
-            <form [formGroup]="signupForm" (ngSubmit)="singupNext()">
+            <form [formGroup]="signupForm" (ngSubmit)="signup()">
               <div id="user-data">
                 <div class="form-group">
                   <label for="Name">Service 1
                   </label>
-                  <input type="photo" id="name" class="form-control">
+                  <input type="photo" id="name" class="form-control" formControlName="service1">
                 </div>
                 <div class="form-group">
                   <label for="address">Service 2
                   </label>
-                  <input type="text" id="address" class="form-control">
+                  <input type="text" id="address" class="form-control" formControlName="service2">
                 </div>
               </div>
               <div>

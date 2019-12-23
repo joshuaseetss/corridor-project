@@ -1,28 +1,30 @@
 <div>
-  <app-business-header></app-business-header>
+  <app-service-header></app-service-header>
 </div>
 <div>
     <div class="container">
         <div class="row">
           <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <h3>Login</h3>
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
               <div id="user-data">
                 <div class="form-group">
                   <label for="email">Email Address
                       <span class="required">*</span>
                   </label>
-                  <input type="email" placeholder="Enter Email" id="email" class="form-control">
+                  <input type="email" placeholder="Enter Email" id="email" class="form-control" formControlName="email">
                 </div>
                 <div class="form-group">
                   <label for="password">Password
                       <span class="required">*</span>
                   </label>
-                  <input type="password" placeholder="Enter Password" id="password" class="form-control">
+                  <input type="password" placeholder="Enter Password" id="password" class="form-control" formControlName="password">
                 </div>
               </div>
               <br>
-                <button class="btn btn-primary" type="submit" >Login</button>
+              <div>
+              </div>
+                <button class="btn btn-primary" type="submit">Login</button>
             </form>
           </div>
         </div>

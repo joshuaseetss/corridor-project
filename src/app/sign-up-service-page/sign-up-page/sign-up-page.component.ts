@@ -34,7 +34,6 @@ export class SignUpPageComponent implements OnInit {
       firstName: new FormControl('',[Validators.required]),
       lastName: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      phone: new FormControl('',[Validators.required]),
       password: new FormControl('',[Validators.required])
     });
   }
@@ -44,10 +43,12 @@ export class SignUpPageComponent implements OnInit {
       firstName: this.signupForm.get('firstName').value,
       lastName: this.signupForm.get('lastName').value,
       email: this.signupForm.get('email').value,
-      phone: this.signupForm.get('phone').value,
       password: this.signupForm.get('password').value
     };
-    this.dataService.serviceProviderSignupData = data;
+    this.dataService.serviceProviderSignupData.firstName = data.firstName;
+    this.dataService.serviceProviderSignupData.lastName = data.lastName;
+    this.dataService.serviceProviderSignupData.email = data.email;
+    this.dataService.serviceProviderSignupData.password = data.password;
     this.router.navigateByUrl('/basic-info-page');
   }
 

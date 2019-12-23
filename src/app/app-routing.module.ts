@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HairPageComponent } from './hair-page/hair-page.component';
 import { HomeComponent } from './home/home.component'
 import { BusinessCardDetailComponent } from './shared-components/business-card-detail/business-card-detail.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

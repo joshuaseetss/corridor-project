@@ -22,6 +22,11 @@
   background-color: red;
 }
 
+.btn[disabled]:hover {
+  background-color: #FFB1B1;
+  cursor: not-allowed;
+}
+
 h3 {
   font-family: 'Fjord One', serif;
   text-align: center;

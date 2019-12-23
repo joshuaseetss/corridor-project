@@ -13,18 +13,30 @@
                   <span class="required">*</span>
               </label>
               <input type="text" placeholder="Enter First Name" id="firstname" class="form-control" formControlName="firstName">
+              <p class="error-message" *ngIf="signupForm.get('firstName').touched && signupForm.get('firstName').errors && signupForm.get('firstName').errors.required">
+                * Please enter First Name.
+              </p>
             </div>
             <div class="form-group">
               <label for="lastname">Last Name
                   <span class="required">*</span>
               </label>
               <input type="text" placeholder="Enter Last Name" id="lastname" class="form-control" formControlName="lastName">
+              <p class="error-message" *ngIf="signupForm.get('lastName').touched && signupForm.get('lastName').errors && signupForm.get('lastName').errors.required">
+                * Please enter Last Name.
+              </p>
             </div>
             <div class="form-group">
               <label for="email">Email Address
                   <span class="required">*</span>
               </label>
               <input type="email" placeholder="Enter Email" id="email" class="form-control" formControlName="email">
+              <p class="error-message" *ngIf="signupForm.get('email').touched && signupForm.get('email').errors && signupForm.get('email').errors.required">
+                * Please enter Email Address.
+              </p>
+              <p class="error-message" *ngIf="signupForm.get('email').touched && signupForm.get('email').errors && signupForm.get('email').errors.email">
+                * Please enter a valid Email Address.
+              </p>
             </div>
             <div class="form-group">
               <label for="phone">Phone Number
@@ -32,18 +44,27 @@
               </label>
               <input type="tel" pattern="[8-9]{1}[0-9]{3}-[0-9]{4}" 
                 placeholder="Enter Phone Number" id="phone" class="form-control" formControlName="phone">
+              <p class="error-message" *ngIf="signupForm.get('phone').touched && signupForm.get('phone').errors && signupForm.get('phone').errors.required">
+                * Please enter Phone Number.
+              </p>
             </div>
             <div class="form-group">
               <label for="password">Password
                   <span class="required">*</span>
               </label>
               <input type="password" placeholder="Enter Password" id="password" class="form-control" formControlName="password">
+              <p class="error-message" *ngIf="signupForm.get('password').touched && signupForm.get('password').errors && signupForm.get('password').errors.required">
+                * Please enter Password.
+              </p>
             </div>
             <div class="form-group">
               <label for="confirmpassword">Confirm Password
                   <span class="required">*</span>
               </label>
-              <input type="password" placeholder="Confirm Password" id="confirmpassword" class="form-control">
+              <input type="password" placeholder="Confirm Password" id="confirmpassword" class="form-control" formControlName="confirmPassword">
+              <p class="error-message" *ngIf="signupForm.get('confirmPassword').touched && signupForm.get('confirmPassword').errors && signupForm.get('confirmPassword').errors.required">
+                * Please enter Confirm Password.
+              </p>
             </div>
             <div>
                 <input type="checkbox" name="mailing" value="mail"> I would like to receive promotions, tips and announcements via email<br>
@@ -51,7 +72,7 @@
           </div>
           <br>
           <div style="text-align: center;">
-            <button class="btn btn-primary" type="submit" routerLink="/customer-profile" >Sign Up</button>
+            <button class="btn btn-primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
           </div>
         </form>
       </div>

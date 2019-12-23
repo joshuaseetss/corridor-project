@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { mimeType } from 'src/app/mime-type.validator';
 
 @Component({
   selector: 'app-sign-up-photos-page',
@@ -12,18 +13,19 @@ export class SignUpPhotosPageComponent implements OnInit {
 
   signupPhotosForm: FormGroup;
   portfolio = [];
+  portfolioObj = [];
   maxImageError = false;
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     this.signupPhotosForm = new FormGroup({
-      image: new FormControl(null, Validators.required)
+      image: new FormControl(null, { validators: Validators.required, asyncValidators: [mimeType] })
     });
   }
 
   signupNext() {
-    this.dataService.serviceProviderSignupData.portfolio = this.portfolio;
+    this.dataService.serviceProviderSignupData.portfolio = this.portfolioObj;
     this.router.navigateByUrl('/price-service');
   }
 
@@ -46,8 +48,8 @@ export class SignUpPhotosPageComponent implements OnInit {
         }
       };
       fileReader.readAsDataURL(fileObj.file);
-
       this.portfolio.push(fileObj);
+      this.portfolioObj.push(fileObj.file);
     }
   }
 

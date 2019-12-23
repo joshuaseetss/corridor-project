@@ -22,9 +22,27 @@ export class PriceServicePageComponent implements OnInit {
   }
 
   signup() {
-    this.dataService.serviceProviderSignupData.service1 = this.signupForm.get('service1').value;
-    this.dataService.serviceProviderSignupData.service2 = this.signupForm.get('service2').value;
-    this.authService.serviceProviderSignup(this.dataService.serviceProviderSignupData);
+    const userData = new FormData();
+    userData.append('firstName', this.dataService.serviceProviderSignupData.firstName);
+    userData.append('lastName', this.dataService.serviceProviderSignupData.lastName);
+    userData.append('email', this.dataService.serviceProviderSignupData.email);
+    userData.append('password', this.dataService.serviceProviderSignupData.password);
+    userData.append('name', this.dataService.serviceProviderSignupData.name);
+    userData.append('address', this.dataService.serviceProviderSignupData.address);
+    userData.append('postalCode', this.dataService.serviceProviderSignupData.postalCode);
+    userData.append('serviceCategories', this.dataService.serviceProviderSignupData.serviceCategories);
+    userData.append('description', this.dataService.serviceProviderSignupData.description);
+    userData.append('tags', this.dataService.serviceProviderSignupData.tags);
+    userData.append('service1', this.signupForm.get('service1').value);
+    userData.append('service2', this.signupForm.get('service2').value);
+
+    this.dataService.serviceProviderSignupData.portfolio.forEach(image => {
+      userData.append('portfolio', image);
+    });
+    
+    this.authService.serviceProviderSignup(userData).subscribe((response) => {
+      console.log(response);
+    });
   }
 
 }

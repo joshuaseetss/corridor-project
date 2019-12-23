@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class BasicInfoPageComponent implements OnInit {
   collapsed = false;
   signupBasicInfoForm: FormGroup;
+  categoryArray = ['Hair', 'Facial', 'Brows and Lashes', 'Makeup', 'Nails'];
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -19,7 +20,7 @@ export class BasicInfoPageComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       postalCode: new FormControl('', [Validators.required]),
-      serviceCategory: new FormControl('', [Validators.required]),
+      serviceCategories: new FormControl('', [Validators.required]),
       description: new FormControl(''),
       tags: new FormControl('')
     });
@@ -30,14 +31,17 @@ export class BasicInfoPageComponent implements OnInit {
       name: this.signupBasicInfoForm.get('name').value,
       address: this.signupBasicInfoForm.get('address').value,
       postalCode: this.signupBasicInfoForm.get('postalCode').value,
-      serviceCategory: this.signupBasicInfoForm.get('serviceCategory').value,
+      serviceCategories: this.signupBasicInfoForm.get('serviceCategories').value,
       description: this.signupBasicInfoForm.get('description').value,
       tags: this.signupBasicInfoForm.get('tags').value
     };
+
+    console.log(this.signupBasicInfoForm.get('serviceCategories').value);
+
     this.dataService.serviceProviderSignupData.name = this.signupBasicInfoForm.get('name').value;
     this.dataService.serviceProviderSignupData.address = this.signupBasicInfoForm.get('address').value;
     this.dataService.serviceProviderSignupData.postalCode = this.signupBasicInfoForm.get('postalCode').value;
-    this.dataService.serviceProviderSignupData.serviceCategory = this.signupBasicInfoForm.get('serviceCategory').value;
+    this.dataService.serviceProviderSignupData.serviceCategories = this.signupBasicInfoForm.get('serviceCategories').value;
     this.dataService.serviceProviderSignupData.description = this.signupBasicInfoForm.get('description').value;
     this.dataService.serviceProviderSignupData.tags = this.signupBasicInfoForm.get('tags').value;
 

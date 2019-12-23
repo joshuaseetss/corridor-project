@@ -26,9 +26,11 @@ import { CustomerSignUpPageComponent } from './customer-sign-up/customer-sign-up
 import { CustomerProfilePageComponent } from './customer-sign-up/customer-profile-page/customer-profile-page.component';
 import { HomeBusinessLandingPageComponent } from './sign-up-service-page/home-business-landing-page/home-business-landing-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BusinessHeaderComponent } from './shared-components/business-header/business-header.component';
+import { AuthInterceptor } from './auth-interceptor';
+
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -53,8 +55,7 @@ import { BusinessHeaderComponent } from './shared-components/business-header/bus
     CustomerLoginPageComponent,
     CustomerSignUpPageComponent,
     CustomerProfilePageComponent,
-    HomeBusinessLandingPageComponent,
-    BusinessHeaderComponent
+    HomeBusinessLandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +64,10 @@ import { BusinessHeaderComponent } from './shared-components/business-header/bus
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
