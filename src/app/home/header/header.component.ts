@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -7,11 +9,31 @@ import { Component } from '@angular/core';
     
 })
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit, OnDestroy {
     collapsed = false;
     wrapperClasses = '';
     overlayClasses = 'overlay';
     hamburgerClasses = 'hamburger is-closed';
+
+    private authStatusSub: Subscription;
+    isUserAuthenticated = false;
+
+    constructor(private authService: AuthService) { }
+
+    ngOnInit() {
+        this.isUserAuthenticated = this.authService.getIsAuthenticated();
+        this.authStatusSub = this.authService.getAuthStatusListener().subscribe(auth => {
+            this.isUserAuthenticated = auth;
+        });
+    }
+
+    ngOnDestroy() {
+        this.authStatusSub.unsubscribe();
+    }
+
+    logout() {
+        this.authService.logout();
+    }
 
     hamburgerClick() {
         if (this.collapsed) {

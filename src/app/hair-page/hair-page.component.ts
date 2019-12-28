@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BusinessCard } from '../shared-components/business-card/business-card.model';
 import { default as businessCardsData } from '../shared-components/business-cards.data';
+import { ServiceProviderService } from '../service-provider.service';
 
 @Component({
   selector: 'app-hair-page',
@@ -13,8 +14,16 @@ export class HairPageComponent implements OnInit {
   businessCards: Array<BusinessCard> = [];
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router, private route: ActivatedRoute, private providerService: ServiceProviderService
+  ) {
+    this.route.queryParamMap.subscribe((response: any) => {
+      if(response.params && response.params.q) {
+        this.providerService.fetchServiceProviderList({ category: response.params.q }).subscribe((response) => {
+          console.log(response);
+        });
+      }
+    })
+  }
 
   ngOnInit() {
     this.populateBusinessCards();

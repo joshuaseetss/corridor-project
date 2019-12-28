@@ -13,39 +13,57 @@
                       <span class="required">*</span>
                   </label>
                   <input type="text" placeholder="Enter Name" id="name" class="form-control" formControlName="name">
+                  <p class="error-message" *ngIf="signupBasicInfoForm.get('name').touched && signupBasicInfoForm.get('name').errors && signupBasicInfoForm.get('name').errors.required">
+                    * Please enter Name.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="address">Address
                       <span class="required">*</span>
                   </label>
                   <input type="text" placeholder="Enter Address" id="address" class="form-control" formControlName="address">
+                  <p class="error-message" *ngIf="signupBasicInfoForm.get('address').touched && signupBasicInfoForm.get('address').errors && signupBasicInfoForm.get('address').errors.required">
+                    * Please enter Address.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="postalcode">Postal Code
                       <span class="required">*</span>
                   </label>
                   <input type="text" placeholder="Enter Postal Code" id="postalcode" class="form-control" formControlName="postalCode">
+                  <p class="error-message" *ngIf="signupBasicInfoForm.get('postalCode').touched && signupBasicInfoForm.get('postalCode').errors && signupBasicInfoForm.get('postalCode').errors.required">
+                    * Please enter Postal Code.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="serviceCategories">Service Categories
                       <span class="required">*</span>
                   </label>
                   <mat-select formControlName="serviceCategories" multiple class="form-control">
-                    <mat-option *ngFor="let c of categoryArray" [value]="c">{{c}}</mat-option>
+                    <mat-option *ngFor="let c of categoryArray" [value]="c.value">{{c.label}}</mat-option>
                   </mat-select>
+                  <p class="error-message" *ngIf="signupBasicInfoForm.get('serviceCategories').touched && signupBasicInfoForm.get('serviceCategories').errors && signupBasicInfoForm.get('serviceCategories').errors.required">
+                    * Please select at least one Service Category.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="description">Description
                   </label>
                   <input type="text" id="description" class="form-control" height="700px" formControlName="description">
+                  <p class="error-message" *ngIf="signupBasicInfoForm.get('description').touched && signupBasicInfoForm.get('description').errors && signupBasicInfoForm.get('description').errors.required">
+                    * Please enter Description.
+                  </p>
                 </div>
                 <div class="form-group">
                     <label for="tags">Tags</label>
                     <input type="text" id="tags" class="form-control" formControlName="tags">
+                    <p class="error-message" *ngIf="signupBasicInfoForm.get('tags').touched && signupBasicInfoForm.get('tags').errors && signupBasicInfoForm.get('tags').errors.required">
+                      * Please enter Tags.
+                    </p>
                   </div>
               </div>
               <div>
-              <button class="btn btn-primary" type="submit">Next</button>
+              <button class="btn btn-primary" type="submit" [disabled]="signupBasicInfoForm.invalid">Next</button>
             </div>
             </form>
           </div>

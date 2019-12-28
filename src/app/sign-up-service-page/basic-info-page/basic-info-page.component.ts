@@ -11,7 +11,13 @@ import { Router } from '@angular/router';
 export class BasicInfoPageComponent implements OnInit {
   collapsed = false;
   signupBasicInfoForm: FormGroup;
-  categoryArray = ['Hair', 'Facial', 'Brows and Lashes', 'Makeup', 'Nails'];
+  categoryArray = [
+    { label: 'Hair', value: 'hair' },
+    { label: 'Facial', value: 'facial' },
+    { label: 'Brows and Lashes', value: 'browsandlashes' },
+    { label: 'Makeup', value: 'makeup' },
+    { label: 'Nails', value: 'nails' }
+  ];
 
   constructor(private dataService: DataService, private router: Router) { }
 
@@ -35,8 +41,6 @@ export class BasicInfoPageComponent implements OnInit {
       description: this.signupBasicInfoForm.get('description').value,
       tags: this.signupBasicInfoForm.get('tags').value
     };
-
-    console.log(this.signupBasicInfoForm.get('serviceCategories').value);
 
     this.dataService.serviceProviderSignupData.name = this.signupBasicInfoForm.get('name').value;
     this.dataService.serviceProviderSignupData.address = this.signupBasicInfoForm.get('address').value;

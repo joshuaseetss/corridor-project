@@ -3,7 +3,7 @@
         <a  
             class="list-group-item clearfix" 
             *ngFor="let category of categories"
-            routerLink="/hair"> 
+            (click)="navigate(category.value)"> 
             <div> 
                 <span> 
                     <img 

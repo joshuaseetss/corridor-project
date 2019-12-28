@@ -8,7 +8,7 @@
             <div>
               <h3>Services</h3>
             </div>
-            <form [formGroup]="signupForm" (ngSubmit)="signup()">
+            <form [formGroup]="signupForm" (ngSubmit)="signup()" *ngIf="!isUserCreated else successMessage;">
               <div id="user-data">
                 <div class="form-group">
                   <label for="Name">Service 1
@@ -25,6 +25,11 @@
               <button class="btn btn-primary" type="submit">Submit</button>
             </div>
             </form>
+            <ng-template #successMessage>
+              <p class="success-message">Your account has been created successfully!</p>
+              <p class="login-link"><a class="link" routerLink="/login-page">Click here to Login</a></p>
+            </ng-template>
+            
           </div>
         </div>
       </div>

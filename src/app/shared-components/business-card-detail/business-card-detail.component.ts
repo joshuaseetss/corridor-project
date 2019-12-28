@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BusinessCard } from '../business-card/business-card.model';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-business-card-detail',
@@ -7,9 +8,12 @@ import { BusinessCard } from '../business-card/business-card.model';
   styleUrls: ['./business-card-detail.component.css']
 })
 export class BusinessCardDetailComponent implements OnInit {
+  
+  businessData: any;
   businessCard: BusinessCard;
+  services = [];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     let localStorageBusinessCard = localStorage.getItem('businessCardDetailObject');
@@ -17,6 +21,11 @@ export class BusinessCardDetailComponent implements OnInit {
     if (localStorageBusinessCard) {
       this.businessCard = JSON.parse(localStorageBusinessCard);
     }
+
+    this.businessData = this.dataService.serviceProviderData;
+    this.services.push(this.businessData.service1);
+    this.services.push(this.businessData.service2);
+    console.log(this.businessData);
   }
 
 }

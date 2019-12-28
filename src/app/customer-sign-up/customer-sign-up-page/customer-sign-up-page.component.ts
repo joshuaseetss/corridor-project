@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/auth.service';
 export class CustomerSignUpPageComponent implements OnInit {
 
   signupForm: FormGroup;
+  signupComplete = false;
+  signupCompleteMessage: string;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -31,8 +33,15 @@ export class CustomerSignUpPageComponent implements OnInit {
       phone: this.signupForm.get('phone').value,
       password: this.signupForm.get('password').value
     };
-    this.authService.customerSignup(data).subscribe((response) => {
-      console.log(response);
-    });
+    this.authService.customerSignup(data).subscribe(
+      (response) => {
+        this.signupComplete = true;
+        this.signupCompleteMessage = response.message; 
+      },
+      (e) => {
+        this.signupComplete = true;
+        this.signupCompleteMessage = e.error.message;
+      }
+    );
   }
 }

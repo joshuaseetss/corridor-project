@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/auth.service';
 export class PriceServicePageComponent implements OnInit {
 
   signupForm: FormGroup;
+  isUserCreated = false;
+  errorInSignup = false;
 
   constructor(private dataService: DataService, private authService: AuthService) { }
 
@@ -30,7 +32,11 @@ export class PriceServicePageComponent implements OnInit {
     userData.append('name', this.dataService.serviceProviderSignupData.name);
     userData.append('address', this.dataService.serviceProviderSignupData.address);
     userData.append('postalCode', this.dataService.serviceProviderSignupData.postalCode);
-    userData.append('serviceCategories', this.dataService.serviceProviderSignupData.serviceCategories);
+
+    this.dataService.serviceProviderSignupData.serviceCategories.forEach(category => {
+      userData.append('serviceCategories', category);
+    });
+
     userData.append('description', this.dataService.serviceProviderSignupData.description);
     userData.append('tags', this.dataService.serviceProviderSignupData.tags);
     userData.append('service1', this.signupForm.get('service1').value);
@@ -40,9 +46,16 @@ export class PriceServicePageComponent implements OnInit {
       userData.append('portfolio', image);
     });
     
-    this.authService.serviceProviderSignup(userData).subscribe((response) => {
-      console.log(response);
-    });
+    this.authService.serviceProviderSignup(userData).subscribe(
+      (response) => {
+        if(response.success) {
+          this.isUserCreated = true;
+        }
+      },
+      (error) => {
+        this.errorInSignup = true;
+      }
+    );
   }
 
 }

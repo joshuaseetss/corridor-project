@@ -3,7 +3,6 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UUID = '940926a6-fb69-47aa-ba84-92292e96885c';
-const validateAuth = require('../middleware/validate-auth');
 const multer = require('multer');
 const User = require('../models/user');
 const ServiceProvider = User.ServiceProvider;
@@ -50,8 +49,8 @@ router.post('/serviceProviderSignup', multer({ storage: storage }).array('portfo
     user.save()
       .then(result => {
         res.status(201).json({
-          message: 'user creation successful',
-          result: result
+          success: true,
+          message: 'user creation successful'
         });
       })
       .catch(error => {
@@ -90,6 +89,7 @@ router.post('/serviceProviderLogin', (req, res, next) => {
 
       res.status(200).json({
         authToken: token,
+        userData: fetchedUser,
         expiresIn: 900
       })
     })
@@ -105,19 +105,26 @@ router.post('/customerSignup', (req, res, next) => {
   const userData = req.body;
   bcrypt.hash(userData.password, 10).then((hash) => {
     userData.password = hash;
-    console.log(Customer);
     const user = new Customer(userData);
 
     user.save()
       .then(result => {
         res.status(201).json({
-          message: 'user creation successful',
-          result: result
+          message: 'Your account has been created successfully!',
+          hasUserCreated: true
         });
       })
       .catch(error => {
+        const errorObj = error.errors;
+        let errorMessage = '';
+        if(errorObj.email && errorObj.email.properties.type === 'unique') {
+          errorMessage = 'This email id is already registered.';
+        } else {
+          errorMessage = 'Internal server error. Please try after sometime';
+        }
         res.status(500).json({
-          errorType: error.errors
+          errorType: error.errors,
+          message: errorMessage
         });
       });
   });

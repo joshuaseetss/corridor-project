@@ -33,8 +33,11 @@ html {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.btn[disabled]:hover {
+    background-color: #FFB1B1 !important;
+    cursor: not-allowed;
+}
+
 .error-message {
     color: #ff0000;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -10,7 +10,7 @@ const serviceProviderSchema = mongoose.Schema({
   name: { type: String, require: true },
   address: { type: String, require: true },
   postalCode: { type: String, require: true },
-  serviceCategory:  { type: String },
+  serviceCategories:  { type: Array },
   description:  { type: String },
   tags:  { type: String },
   portfolio: { type: Array },

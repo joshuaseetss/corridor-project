@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row" *ngIf="!signupComplete else message">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <h3>Sign Up</h3>
         <form [formGroup]="signupForm" (ngSubmit)="signup()">
@@ -77,5 +77,10 @@
         </form>
       </div>
     </div>
+    <ng-template #message>
+      <p class="signup-complete">{{ signupCompleteMessage }}</p>
+      <p class="login-link"><a routerLink="/customer-login" class="link">Click here to Login</a></p>
+    </ng-template>
+    
   </div>
 </div>

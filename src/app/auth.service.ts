@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   private isAuthenticated = false;
   private tokenTimer: any;
 
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
 
   getToken() {
     return this.token;
@@ -43,7 +44,7 @@ export class AuthService {
 
         const now = new Date();
         this.saveAuthData(this.token, new Date(now.getTime() + (response.expiresIn * 1000)));
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }
     });
   }
@@ -53,7 +54,7 @@ export class AuthService {
   }
 
   serviceProviderLogin(data: {}) {
-    this.httpClient.post<{authToken: string, expiresIn: number}>(this.API_URL + 'user/serviceProviderLogin', data).subscribe((response) => {
+    this.httpClient.post<{authToken: string, userData: any, expiresIn: number}>(this.API_URL + 'user/serviceProviderLogin', data).subscribe((response) => {
       this.token = response.authToken;
       if(this.token) {
         this.setAuthTimer(response.expiresIn);
@@ -62,7 +63,8 @@ export class AuthService {
 
         const now = new Date();
         this.saveAuthData(this.token, new Date(now.getTime() + (response.expiresIn * 1000)));
-        this.router.navigate(['/']);
+        this.dataService.serviceProviderData = response.userData;
+        this.router.navigate(['/business-card-detail']);
       }
     });
   }
@@ -91,7 +93,7 @@ export class AuthService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   private setAuthTimer(duration: number) {
