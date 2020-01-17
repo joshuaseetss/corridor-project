@@ -36,3 +36,57 @@ h3 {
   text-align: center;
   font-size: 1.5rem;
 }
+
+.phone-wrapper {
+  position: relative;
+}
+
+.phone-wrapper input {
+  padding-left: 5rem;
+}
+
+.country-code {
+  position: absolute;
+  top: 0;
+  padding: 0.7rem;
+  background: #e0e0e0;
+  font-weight: 500;
+}
+
+.upload-container {
+  justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+.upload-container label {
+  text-align: center;
+}
+
+.upload-container .row {
+  justify-content: center;
+}
+
+.upload-image .material-icons {
+  font-size: 4rem;
+  cursor: pointer;
+  display: block;
+}
+
+.upload-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+.image-preview-container {
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.image-preview img {
+  max-height: 15rem;
+  max-width: 25rem;
+}

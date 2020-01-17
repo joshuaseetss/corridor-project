@@ -13,18 +13,32 @@
                       <span class="required">*</span>
                   </label>
                   <input type="email" placeholder="Enter Email" id="email" class="form-control" formControlName="email">
+                  <p class="error-message" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors && loginForm.get('email').errors.required">
+                    * Please enter Email Address.
+                  </p>
+                  <p class="error-message" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors && loginForm.get('email').errors.email">
+                    * Please enter a valid Email Address.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="password">Password
                       <span class="required">*</span>
                   </label>
                   <input type="password" placeholder="Enter Password" id="password" class="form-control" formControlName="password">
+                  <p class="error-message" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors && loginForm.get('password').errors.required">
+                    * Please enter Password.
+                  </p>
                 </div>
               </div>
               <br>
               <div>
               </div>
-                <button class="btn btn-primary" type="submit">Login</button>
+                <div style="text-align: center;">
+                  <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+                <p class="error-message" *ngIf="isLoginError">
+                  {{errorMessage}}
+                </p>
             </form>
           </div>
         </div>

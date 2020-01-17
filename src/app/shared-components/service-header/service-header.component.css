@@ -6,7 +6,8 @@ a{
   text-decoration: none;
   color: black;
 }
-navbar-color {
+
+.navbar-color {
   background: transparent;
 }
 
@@ -20,7 +21,9 @@ navbar-color {
 
 .header {
   text-align: center;
+  margin: 0 auto;
 }
+
 .container {
   margin-top: 30px;
 }

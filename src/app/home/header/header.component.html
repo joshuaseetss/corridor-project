@@ -1,24 +1,8 @@
-<nav class="navbar navbar-expand bg-transparent">
+<!-- <nav class="navbar navbar-expand bg-transparent">
     <div class="container-fluid">
         <div class="navbar-header">
             <div id="wrapper" [class]="wrapperClasses">
                 <div [class]="overlayClasses"></div>
-
-                <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-                    <ul class="nav sidebar-nav">
-                        <li><a routerLink="./sign-up-page">Sign Up</a></li>
-                        <li><a routerLink="./login-page">Login</a></li>
-                    </ul>
-                </nav>
-
-                <button 
-                    type="button" 
-                    (click)="hamburgerClick()" 
-                    [class]="hamburgerClasses">
-                    <span class="hamb-top"></span>
-                    <span class="hamb-middle"></span>
-                    <span class="hamb-bottom"></span>
-                </button>
             </div>
 
             <h1 class="header"> Corridor </h1>
@@ -32,7 +16,19 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Home Services </button>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/customer-login" *ngIf="!isUserAuthenticated"> Login </button>
+                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/profile" *ngIf="isUserAuthenticated"> Hello {{firstName}} </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/customer-login" *ngIf="!isUserAuthenticated"> Login as Customer </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/login-page" *ngIf="!isUserAuthenticated"> Login as Service Provider </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/customer-sign-up" *ngIf="!isUserAuthenticated"> Sign up as Customer </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/sign-up-page" *ngIf="!isUserAuthenticated"> Sign up as Service Provider </button>
                 </li>
                 <li class="nav-item">
                     <button class="btn btn-outline-success my-2 my-sm-0" *ngIf="isUserAuthenticated" (click)="logout()"> Logout </button>
@@ -44,6 +40,40 @@
                 <li class="nav-item">
 
                     </li>
-                </ul> -->
+                </ul>
     </div>
-</nav>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h1><a class="app-title" routerLink="/">Corridor</a></h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"
+            routerLink="./home-business-landing-page" *ngIf="!isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Home Services </button>
+        </li>
+        <li class="nav-item" *ngIf="isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/profile"> Hello {{firstName}} </button>
+        </li>
+        <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/customer-login"> Login as Customer </button>
+        </li>
+        <!-- <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/login-page"> Login as Service Provider </button>
+        </li> -->
+        <!-- <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/customer-sign-up"> Sign up as Customer </button>
+        </li> -->
+        <!-- <li class="nav-item" *ngIf="!isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0"  routerLink="/sign-up-page"> Sign up as Service Provider </button>
+        </li> -->
+        <li class="nav-item" *ngIf="isUserAuthenticated">
+            <button class="btn btn-outline-success my-2 my-sm-0" (click)="logout()"> Logout </button>
+        </li>
+      </ul>
+    </div>
+  </nav>

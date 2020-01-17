@@ -17,3 +17,39 @@ h3 {
   font-family: 'Fjord One', serif;
   text-align: center;
 }
+
+.disabled {
+  cursor: not-allowed;
+  background-color: #DCDCDC;
+}
+
+.opening-hours {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0;
+}
+
+.slot-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.slot-wrapper .mat-select {
+  min-width: 9rem;
+  margin: 0 1rem;
+}
+
+.opening-hours-wrapper {
+  padding: 3rem;
+}
+
+.day-label, .closed {
+  display: flex;
+  align-self: center;
+}
+
+.day-label {
+  min-width: 8rem;
+}

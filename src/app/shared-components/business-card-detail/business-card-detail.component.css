@@ -95,3 +95,10 @@
     padding: 5px;
     font-size: 13px;
 }
+
+.opening-hours {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;;
+    padding: 0 1rem;
+}

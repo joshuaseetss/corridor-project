@@ -1,3 +1,7 @@
+.container-fluid {
+    padding: 0;
+}
+
 @media all and (max-width: 480px) {
     .how-it-works { display: none; }
     .how-it-works ul.items {display: none;}
@@ -9,7 +13,6 @@
     width:auto;
     background-image:url('https://sg2-cdn.pgimgs.com/cms/static/2018/12/hdb-corridor-privacy-propertyguru.original.jpg');
     background-position:50% 50%;
-    
   }
 
 .how-it-works {
@@ -17,17 +20,16 @@
     display: inherit;
     box-shadow: 0 3px 6px #ddd;
     background-color: #fff;
-    width: 101%;
-
+    width: 100%;
 }
 .how-it-works ul.items {
     height: 110px;
     flex-direction: row;
-    min-width: 696px;
 	list-style: none;
     padding-top: 5px;
     padding: inherit;
-    margin: 0; 
+    margin: 0;
+    width: 100%;
 }
 
 .how-it-works ul.items>li {

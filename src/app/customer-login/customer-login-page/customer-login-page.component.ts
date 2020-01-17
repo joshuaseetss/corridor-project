@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-customer-login-page',
@@ -13,6 +14,7 @@ export class CustomerLoginPageComponent implements OnInit {
   loginForm: FormGroup;
   isLoginError = false;
   errorMessage: string;
+  private authStatusSub: Subscription;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -30,6 +32,13 @@ export class CustomerLoginPageComponent implements OnInit {
     }
 
     this.authService.customerLogin(data);
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(auth => {
+      if (!auth) {
+        this.isLoginError = true;
+        this.errorMessage = this.authService.getErrorMessage();
+      }
+    });
+    
     // this.authService.customerLogin(data).subscribe(
     //   (response) => {
     //     if(response.isValidUser) {

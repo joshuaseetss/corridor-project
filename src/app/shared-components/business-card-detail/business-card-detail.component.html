@@ -12,7 +12,7 @@
                         size="20px"
                         readonly="true">
                     </star-rating>
-                    <span class="no-of-reviews">({{ businessCard.noOfReviews }})</span>
+                    <!-- <span class="no-of-reviews">({{ businessCard.noOfReviews }})</span> -->
                 </div>
             </div>
             <div class="col-xs-12 col-sm-8">
@@ -39,10 +39,10 @@
                     <h4><strong>Services Available</strong></h4>
                     <div class="services-list">
                         <div 
-                            *ngFor="let service of services"
+                            *ngFor="let service of businessData.services; let i= index"
                             class="service row">
-                            <div class="col-xs-8"><strong>{{ service }}</strong></div>
-                            <div class="col-xs-4">SGD {{ 65 }}</div>
+                            <div class="col-xs-8"><strong>{{ service.name || 'NA' }}</strong></div>
+                            <div class="col-xs-4">SGD {{ service.price || 'NA' }}</div>
                         </div>
                     </div>
                 </div>
@@ -51,28 +51,28 @@
                         <div class="col-xs-6">
                             <h4><strong>Reviews</strong></h4>
                         </div>
-                        <div class="col-xs-6 text-right">
-                            <button type="button" class="review-btn">Leave a Review</button>
+                        <div class="col-xs-6 text-right" *ngIf="(userData && userData.userType === 'customer')">
+                            <button type="button" class="review-btn" (click)="addReviewDialog()">Leave a Review</button>
                         </div>
                     </div>
                     <div 
-                        *ngFor="let review of businessCard.reviews"
+                        *ngFor="let review of reviews"
                         class="row review">
                         <div class="col-xs-10">
                             <star-rating 
-                                value="{{ review.rating }}" 
+                                value="{{ review.starValue }}" 
                                 checkedcolor="orange" 
                                 uncheckedcolor="lightgray" 
                                 size="20px"
                                 readonly="true">
                             </star-rating>
-                            <span class="reviewer">{{ review.reviewer }}</span>
+                            <span class="reviewer">{{ review.firstName }}</span>
                         </div>
-                        <div class="col-xs-2 text-right">{{ review.date }}</div>
-                        <div class="col-xs-12">{{ review.reviewText }}</div>
+                        <!-- <div class="col-xs-2 text-right">{{ review.date }}</div> -->
+                        <div class="col-xs-12">{{ review.desc }}</div>
                         <div class="col-xs-3">
                             <img 
-                                [src]="review.imageUrl"
+                                [src]="review.photo"
                                 class="img-responsive"
                             />
                         </div>
@@ -83,7 +83,7 @@
                 <div class="address-info">
                     <div>
                         <h4><strong>Address</strong></h4>
-                        <p>{{ businessData.address }}{{ businessData.postalCode }}</p>
+                        <p>{{ businessData.address }}, {{ businessData.postalCode }}</p>
                     </div>
                     <div>
                         <h4><strong>Number</strong></h4>
@@ -94,9 +94,23 @@
                     </div>
                     <div>
                         <h4><strong>Opening Hours</strong></h4>
-                        <div
-                            *ngFor="let openingHr of businessCard.openingHrs">
-                            {{ openingHr.day }}:{{ openingHr.hrs }}
+                        <div class="opening-hours-wrapper">
+                            <ul class="opening-hours row" *ngFor="let oh of businessData.openingHours; let i = index;">
+                                <li class="day-label col-sm-4">{{oh.day}}</li>
+                                <li class="start col-sm-2" *ngIf="oh.start !== ''">
+                                    <div class="slot-wrapper">
+                                        <span>{{oh.start}}</span>
+                                    </div>
+                                </li>
+                                <li class="end col-sm-2" *ngIf="oh.end !== ''">
+                                    <div class="slot-wrapper">
+                                        <span>{{oh.end}}</span>
+                                    </div>
+                                </li>
+                                <li class="closed col-sm-4" *ngIf="oh.isClosed">
+                                    <span>Closed</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 h1 {
     font-family: 'Fjord One', serif;
-    color: black; 
+    color: black;
+    padding: 0 1rem;
 }
 a{
     text-decoration: none; 
@@ -15,22 +16,18 @@ navbar-color {
   }
 
 @media (min-width: 768px) {
-.navbar-collapse.collapse {
+/* .navbar-collapse.collapse {
     display: block!important;
     height: auto!important;
     padding-bottom: 0;
     overflow: visible!important;
     padding-top: 20px;
-}
-.navbar-right {
-    float: right!important;
-    margin-right: -15px;
-    margin: 20px; 
-}
-}
-
-.navbar {
-    background-color: #FEFFB7;
+} */
+    .navbar-right {
+        float: right!important;
+        margin-right: -15px;
+        margin: 20px; 
+    }
 }
 
 .btn {
@@ -40,7 +37,7 @@ navbar-color {
 .search-bar-wrapper {
     margin-top: 20px;
     display: inline-block;
-    margin-left: 200px;
+    /* margin-left: 200px; */
 }
 
 .search-bar-wrapper .search-input,

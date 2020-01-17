@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BusinessCard } from '../shared-components/business-card/business-card.model';
 import { default as businessCardsData } from '../shared-components/business-cards.data';
 import { ServiceProviderService } from '../service-provider.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-hair-page',
@@ -12,17 +13,20 @@ import { ServiceProviderService } from '../service-provider.service';
 export class HairPageComponent implements OnInit {
 
   businessCards: Array<BusinessCard> = [];
+  businessData: [];
 
   constructor(
-    private router: Router, private route: ActivatedRoute, private providerService: ServiceProviderService
+    private router: Router, private route: ActivatedRoute, private providerService: ServiceProviderService,
+    private dataService: DataService
   ) {
     this.route.queryParamMap.subscribe((response: any) => {
-      if(response.params && response.params.q) {
+      if (response.params && response.params.q) {
         this.providerService.fetchServiceProviderList({ category: response.params.q }).subscribe((response) => {
-          console.log(response);
+          this.businessData = response.data;
+          this.dataService.serviceProviderData = response.data;
         });
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -57,6 +61,7 @@ export class HairPageComponent implements OnInit {
 
   goToBusinessCardDetail(index: number) {
     localStorage.setItem('businessCardDetailObject', JSON.stringify(this.businessCards[index]));
+    this.dataService.selectedProvider = index + '';
     this.router.navigate(['/business-card-detail']);
   }
 }

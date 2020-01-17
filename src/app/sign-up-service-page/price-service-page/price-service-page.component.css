@@ -1,0 +1,19 @@
+.service-label {
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+.success-message, .login-link {
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.delete-button {
+  margin-top: 2rem;
+}
+
+.submit-button {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 3rem;
+}

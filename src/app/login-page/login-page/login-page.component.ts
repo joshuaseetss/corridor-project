@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BusinessCard } from 'src/app/shared-components/business-card/business-card.model';
 import businessCardsData from 'src/app/shared-components/business-cards.data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
   isLoginError = false;
   errorMessage: string;
+  private authStatusSub: Subscription;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -30,9 +32,15 @@ export class LoginPageComponent implements OnInit {
     const data = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
-    }
+    };
 
     this.authService.serviceProviderLogin(data);
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe((auth: any) => {
+      if (!auth) {
+        this.isLoginError = true;
+        this.errorMessage = this.authService.getErrorMessage();
+      }
+    });
   }
 
   businessCards: Array<BusinessCard> = [];

@@ -22,3 +22,8 @@ h5 {
   font-family: 'Fjord One', serif;
   text-align: center;
 }
+
+.error-message {
+  text-align: center;
+  margin-top: 2rem;
+}

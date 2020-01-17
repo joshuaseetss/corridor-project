@@ -1,37 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Fjord font  */
-@import url('https://fonts.googleapis.com/css?family=Fjord+One&display=swap'); 
 
+@import url('https://fonts.googleapis.com/css?family=Fjord+One&display=swap');
 .header {
-    color: white; 
+    color: white;
     margin-top: 0px;
     margin-bottom: 0px;
     font-family: 'Fjord One', serif;
-    padding: 20px; 
+    padding: 20px;
 }
 
 .big-font-strong {
-    color: black; 
+    color: black;
     margin-top: 0px;
     font-family: 'Fjord One', serif;
 }
 
 .normal-font {
-    color: black; 
+    color: black;
     font-family: 'Fjord One', serif;
     font-size: .875rem;
     line-height: 18px;
 }
+
 .h4 {
-    font-family: 'Fjord One', serif ;
+    font-family: 'Fjord One', serif;
 }
 
 html {
     background-color: #F0EEEE;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .btn[disabled]:hover {
     background-color: #FFB1B1 !important;
@@ -40,4 +48,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .error-message {
     color: #ff0000;
+}
+
+.navbar {
+    background-color: #FEFFB7 !important;
+}
+
+.nav-item button.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #000!important;
+    background: #f0f0f0;
+    color: #000;
+}
+
+.cdk-overlay-pane {
+    overflow: auto;
 }

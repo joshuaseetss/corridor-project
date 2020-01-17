@@ -13,10 +13,17 @@ export class AuthService {
   API_URL = environment.apiUrl;
   private token: string;
   private authStatusListener = new Subject<boolean>();
+  private profileUpdateListner = new Subject<boolean>();
   private isAuthenticated = false;
   private tokenTimer: any;
+  private userData: any;
+  private errorMessage: string;
 
   constructor(private httpClient: HttpClient, private router: Router, private dataService: DataService) { }
+
+  getErrorMessage() {
+    return this.errorMessage;
+  }
 
   getToken() {
     return this.token;
@@ -26,8 +33,16 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
+  getProfileUpdateListner() {
+    return this.profileUpdateListner.asObservable();
+  }
+
   getIsAuthenticated() {
     return this.isAuthenticated;
+  }
+
+  getUserData() {
+    return this.userData;
   }
 
   customerSignup(data: {}): Observable<any> {
@@ -35,16 +50,19 @@ export class AuthService {
   }
 
   customerLogin(data: {}) {
-    this.httpClient.post<{authToken: string, expiresIn: number}>(this.API_URL + 'user/customerLogin', data).subscribe((response) => {
+    this.httpClient.post<{authToken: string, userData: any, expiresIn: number}>(this.API_URL + 'user/customerLogin', data).subscribe((response: any) => {
       this.token = response.authToken;
       if(this.token) {
         this.setAuthTimer(response.expiresIn);
         this.isAuthenticated = true;
+        this.userData = response.userData;
         this.authStatusListener.next(true);
-
         const now = new Date();
         this.saveAuthData(this.token, new Date(now.getTime() + (response.expiresIn * 1000)));
         this.router.navigate(['/']);
+      } else {
+        this.errorMessage = response.message;
+        this.authStatusListener.next(false);
       }
     });
   }
@@ -54,17 +72,21 @@ export class AuthService {
   }
 
   serviceProviderLogin(data: {}) {
-    this.httpClient.post<{authToken: string, userData: any, expiresIn: number}>(this.API_URL + 'user/serviceProviderLogin', data).subscribe((response) => {
+    this.httpClient.post<{authToken: string, userData: any, expiresIn: number}>(this.API_URL + 'user/serviceProviderLogin', data).subscribe((response: any) => {
       this.token = response.authToken;
-      if(this.token) {
+      if (this.token) {
         this.setAuthTimer(response.expiresIn);
         this.isAuthenticated = true;
+        this.userData = response.userData;
+        this.dataService.serviceProviderData = response.userData;
         this.authStatusListener.next(true);
 
         const now = new Date();
         this.saveAuthData(this.token, new Date(now.getTime() + (response.expiresIn * 1000)));
-        this.dataService.serviceProviderData = response.userData;
         this.router.navigate(['/business-card-detail']);
+      } else {
+        this.errorMessage = response.message;
+        this.authStatusListener.next(false);
       }
     });
   }
@@ -73,18 +95,37 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const expiration = localStorage.getItem('expiration');
 
-    if(!token || !expiration) {
+    if (!token || !expiration) {
       return;
     }
 
     const now = new Date();
     const diff = new Date(expiration).getTime() - now.getTime();
-    if(diff > 0 ) {
+    if (diff > 0 ) {
       this.token = token;
       this.isAuthenticated = true;
       this.setAuthTimer(diff / 1000);
-      this.authStatusListener.next(true);
+      this.httpClient.post(this.API_URL + 'user/autoAuth', {}).subscribe((response: any) => {
+        if (response.userData) {
+          this.setAuthTimer(response.expiresIn);
+          this.isAuthenticated = true;
+          this.userData = response.userData;
+          this.dataService.serviceProviderData = response.userData;
+          this.authStatusListener.next(true);
+
+          const current = new Date();
+          this.saveAuthData(this.token, new Date(current.getTime() + (response.expiresIn * 1000)));
+        }
+      });
     }
+  }
+
+  updateProfile(data: {}) {
+    this.httpClient.post<{userData: any}>(this.API_URL + 'user/updateProfile', data).subscribe((response) => {
+      this.userData = response.userData;
+      this.dataService.serviceProviderData = response.userData;
+      this.profileUpdateListner.next(true);
+    });
   }
 
   logout() {

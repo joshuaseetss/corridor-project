@@ -31,6 +31,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './auth-interceptor';
 
 import { MatSelectModule } from '@angular/material/select';
+import { ProfileComponent } from './profile/profile.component';
+import { ReviewComponent } from './review/review.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -55,7 +61,9 @@ import { MatSelectModule } from '@angular/material/select';
     CustomerLoginPageComponent,
     CustomerSignUpPageComponent,
     CustomerProfilePageComponent,
-    HomeBusinessLandingPageComponent
+    HomeBusinessLandingPageComponent,
+    ProfileComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +73,14 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatCheckboxModule
+  ],
+  entryComponents: [
+    ReviewComponent
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

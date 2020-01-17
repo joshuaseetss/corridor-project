@@ -1,0 +1,23 @@
+.category-list-wrapper {
+  margin: 2rem 0;
+}
+
+.category-wrapper {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.list-group-item img {
+  max-height: 18rem;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h4 {
+  margin: 1rem 0;
+  text-align: center;
+}

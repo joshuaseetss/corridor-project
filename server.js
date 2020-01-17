@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('./backend/app');
-const debug = require("debug")("Corridor-beta");
+const debug = require("debug");
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -38,7 +38,7 @@ const onError = error => {
 const onListening = () => {
   const addr = server.address();
   const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
-  debug("Listening on " + bind);
+  console.log("Listening on " + bind);
 };
 
 const port = normalizePort(process.env.PORT || '3000');

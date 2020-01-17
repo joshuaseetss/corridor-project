@@ -13,6 +13,7 @@ import { HairPageComponent } from './hair-page/hair-page.component';
 import { HomeComponent } from './home/home.component'
 import { BusinessCardDetailComponent } from './shared-components/business-card-detail/business-card-detail.component';
 import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'customer-login', component: CustomerLoginPageComponent },
   { path: 'customer-sign-up', component: CustomerSignUpPageComponent },
   { path: 'customer-profile', component: CustomerProfilePageComponent },
-  { path: 'home-business-landing-page', component: HomeBusinessLandingPageComponent }
+  { path: 'home-business-landing-page', component: HomeBusinessLandingPageComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({

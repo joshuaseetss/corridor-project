@@ -1,21 +1,12 @@
-<div class="row">
+<div class="row category-list-wrapper">
     <div class="col-xs-12">
-        <a  
-            class="list-group-item clearfix" 
-            *ngFor="let category of categories"
-            (click)="navigate(category.value)"> 
-            <div> 
-                <span> 
-                    <img 
-                    [src]="category.imagePath" 
-                    alt="{{ category.imagePath }}" 
-                    class="img-responsive" 
-                    style="max-height: 50px;">
-                </span>
-                <h4 class="big-font-strong" style="padding-top:5px;"> {{ category.name }} </h4> 
-            </div>
-        </a>
-
+        <div class="col-xs-4 category-wrapper" *ngFor="let category of categories" (click)="navigate(category.value)">
+            <a class="list-group-item clearfix">
+                <div class="image-wrapper">
+                    <img [src]="category.imagePath" alt="{{ category.imagePath }}" class="img-responsive">
+                </div>
+                <h4 class="big-font-strong" style="padding-top:5px;"> {{ category.name }} </h4>
+            </a>
+        </div>
     </div>
-
 </div>

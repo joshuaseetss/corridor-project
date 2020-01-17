@@ -8,22 +8,25 @@
             <div>
               <h3>Services</h3>
             </div>
-            <form [formGroup]="signupForm" (ngSubmit)="signup()" *ngIf="!isUserCreated else successMessage;">
+            <form *ngIf="!isUserCreated else successMessage;">
               <div id="user-data">
-                <div class="form-group">
-                  <label for="Name">Service 1
-                  </label>
-                  <input type="photo" id="name" class="form-control" formControlName="service1">
+                <div class="form-group" *ngFor="let service of services; let i = index;">
+                  <label for="Name">Name</label>
+                  <input class="form-control" [value]="service.name" readonly>
+                  <label for="Name">Price</label>
+                  <input class="form-control" [value]="service.price" readonly>
+                  <button class="btn btn-danger delete-button" (click)="deleteService(i)">Delete</button>
                 </div>
                 <div class="form-group">
-                  <label for="address">Service 2
-                  </label>
-                  <input type="text" id="address" class="form-control" formControlName="service2">
+                  <label for="Name">Name</label>
+                  <input class="form-control" name="service-name" [(ngModel)]="serviceName" type="text">
+                  <label for="Name">Price</label>
+                  <input class="form-control" name="service-price" [(ngModel)]="servicePrice" type="number">
                 </div>
+                <button class="btn btn-primary" [disabled]="!serviceName || !servicePrice" (click)="addService()">Add Service</button>
+                <p class="error-message" *ngIf="addServiceError">* Please enter Name and Price.</p>
               </div>
-              <div>
-              <button class="btn btn-primary" type="submit">Submit</button>
-            </div>
+            <button class="btn btn-primary submit-button" (click)="signup()">Submit</button>
             </form>
             <ng-template #successMessage>
               <p class="success-message">Your account has been created successfully!</p>

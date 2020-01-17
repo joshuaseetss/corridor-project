@@ -1,8 +1,18 @@
+.navbar {
+  padding: 1rem;
+}
+
 h1 {
     font-family: 'Fjord One', serif;
-    color: white; 
+    color: white;
+    margin: 0;
 }
-navbar-color {
+
+h1 a {
+  color: #000;
+}
+
+.navbar-color {
     background: transparent;
 }
 .navbar-nav > li{
@@ -11,18 +21,18 @@ navbar-color {
   }
 
 @media (min-width: 768px) {
-.navbar-collapse.collapse {
+/* .navbar-collapse.collapse {
     display: block!important;
     height: auto!important;
     padding-bottom: 0;
     overflow: visible!important;
     padding-top: 20px;
-}
-.navbar-right {
+} */
+/* .navbar-right {
     float: right!important;
     margin-right: -15px;
     margin: 20px; 
-}
+} */
 }
 
 @media (min-width: 768px) {
@@ -262,4 +272,13 @@ navbar-color {
   .navbar-header .header {
     text-align: center;
   }
+}
+
+.app-title {
+  text-decoration: none;
+}
+
+.navbar-collapse .nav-item {
+  text-align: center;
+  margin: 1rem 1rem;
 }
