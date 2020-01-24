@@ -1,0 +1,99 @@
+.rating {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-container {
+  min-width: 50rem;
+}
+
+.rating-container {
+  justify-content: center;
+}
+
+.rating-value {
+  cursor: pointer;
+}
+
+.rating-value .material-icons {
+  font-size: 5rem;
+  color: orange;
+}
+
+.upload-container {
+  justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+.upload-image .material-icons {
+  font-size: 4rem;
+  cursor: pointer;
+  display: block;
+}
+
+.upload-image {
+  text-align: center;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+.image-preview-container {
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.image-preview img {
+  max-height: 15rem;
+  max-width: 25rem;
+}
+
+.review-desc-container {
+  justify-content: center;
+}
+
+textarea {
+  min-height: 12rem;
+  padding: 1rem;
+}
+
+.submit-button-wrapper {
+  justify-content: center;
+  margin: 3rem 0 2rem 0;
+}
+
+.submit-button-wrapper button {
+  background: #FFB1B1;
+  color: #000;
+}
+
+.success-wrapper {
+  justify-content: center;
+}
+
+.success-wrapper p {
+  font-size: 2rem;
+  margin: 4rem 0;
+}
+
+.close-button-wrapper {
+  justify-content: center;
+}
+
+.close-button-wrapper button {
+  background: #FFB1B1;
+  color: #000;
+}
+
+.cross-button {
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cross-button i {
+  padding: 0 1rem;
+  cursor: pointer;
+}

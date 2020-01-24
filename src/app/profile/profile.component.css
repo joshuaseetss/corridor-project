@@ -1,0 +1,123 @@
+.error-message {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.phone-wrapper {
+  position: relative;
+}
+
+.phone-wrapper input {
+  padding-left: 5rem;
+}
+
+.country-code {
+  position: absolute;
+  top: 0;
+  padding: 0.7rem;
+  background: #e0e0e0;
+  font-weight: 500;
+}
+
+.upload-container {
+  justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+.upload-container label {
+  text-align: center;
+}
+
+.upload-container .row {
+  justify-content: center;
+}
+
+.upload-image .material-icons {
+  font-size: 4rem;
+  cursor: pointer;
+  display: block;
+}
+
+.upload-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+input[type='file'] {
+  visibility: hidden;
+}
+
+.image-preview-container {
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.image-preview {
+  border-radius: 100%;
+  border: 1px solid #e0e0e0;
+}
+
+.image-preview img {
+  max-height: 15rem;
+  max-width: 100%;
+}
+
+.image-upload-button {
+  margin-left: 1rem;
+}
+
+.portfolio-wrapper img {
+  max-width: 100%;
+  height: 10rem;
+}
+
+.portfolio {
+  text-align: center;
+}
+
+.delete-button {
+  margin-top: 2rem;
+}
+
+.error {
+  margin-top: 2rem;
+  color: #ff0000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: #DCDCDC;
+}
+
+.opening-hours {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0;
+}
+
+.slot-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.slot-wrapper .mat-select {
+  min-width: 9rem;
+  margin: 0 1rem;
+}
+
+.opening-hours-wrapper {
+  padding: 3rem;
+}
+
+.day-label, .closed {
+  display: flex;
+  align-self: center;
+}
+
+.day-label {
+  min-width: 8rem;
+}

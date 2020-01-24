@@ -52,7 +52,7 @@ export class AuthService {
   customerLogin(data: {}) {
     this.httpClient.post<{authToken: string, userData: any, expiresIn: number}>(this.API_URL + 'user/customerLogin', data).subscribe((response: any) => {
       this.token = response.authToken;
-      if(this.token) {
+      if (this.token) {
         this.setAuthTimer(response.expiresIn);
         this.isAuthenticated = true;
         this.userData = response.userData;
@@ -78,7 +78,7 @@ export class AuthService {
         this.setAuthTimer(response.expiresIn);
         this.isAuthenticated = true;
         this.userData = response.userData;
-        this.dataService.serviceProviderData = response.userData;
+        this.dataService.setServiceProviderData(response.userData);
         this.authStatusListener.next(true);
 
         const now = new Date();
@@ -96,7 +96,7 @@ export class AuthService {
     const expiration = localStorage.getItem('expiration');
 
     if (!token || !expiration) {
-      return;
+      this.logout();
     }
 
     const now = new Date();
@@ -110,20 +110,21 @@ export class AuthService {
           this.setAuthTimer(response.expiresIn);
           this.isAuthenticated = true;
           this.userData = response.userData;
-          this.dataService.serviceProviderData = response.userData;
           this.authStatusListener.next(true);
 
           const current = new Date();
           this.saveAuthData(this.token, new Date(current.getTime() + (response.expiresIn * 1000)));
         }
       });
+    } else {
+      this.logout();
     }
   }
 
   updateProfile(data: {}) {
     this.httpClient.post<{userData: any}>(this.API_URL + 'user/updateProfile', data).subscribe((response) => {
       this.userData = response.userData;
-      this.dataService.serviceProviderData = response.userData;
+      this.dataService.setServiceProviderData(response.userData);
       this.profileUpdateListner.next(true);
     });
   }

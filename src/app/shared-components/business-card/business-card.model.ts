@@ -8,6 +8,7 @@ export class BusinessCard {
     public noOfReviews: number;
     public description: string;
     public imageUrl: string;
+    public avgRating: string;
     public avgPricePerPax: number;
     public images: Array<string>;
     public portfolio: Array<string>;

@@ -10,10 +10,18 @@ export class DataService {
 
   API_URL = environment.apiUrl;
   serviceProviderSignupData: any = {};
-  serviceProviderData: any = {};
+  private serviceProviderData: any;
   selectedProvider;
 
   constructor(private httpClient: HttpClient) { }
+
+  getServiceProviderData() {
+    return this.serviceProviderData;
+  }
+
+  setServiceProviderData(data) {
+    this.serviceProviderData = data;
+  }
 
   saveReview(data: {}): Observable<any> {
     return this.httpClient.post(this.API_URL + 'review/save', data);
@@ -21,5 +29,9 @@ export class DataService {
 
   getReviews(data: {}): Observable<any> {
     return this.httpClient.post(this.API_URL + 'review/getReviews', data);
+  }
+
+  getServiceProviderById(data: {}): Observable<any> {
+    return this.httpClient.post(this.API_URL + 'serviceProvider/getServiceProviderById', data);
   }
 }

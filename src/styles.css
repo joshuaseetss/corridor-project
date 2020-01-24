@@ -81,3 +81,10 @@ body {
 .cdk-overlay-pane {
     overflow: auto;
 }
+
+app-business-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}

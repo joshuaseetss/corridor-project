@@ -1,11 +1,15 @@
 <div> 
     <app-inside-header> </app-inside-header>
-    <div class="row">
-        <app-business-card 
-            *ngFor="let businessCard of businessData; let i = index;"
-            [businessCard]="businessCard"
-            [wrapperCssClass]="'col-xs-12 col-sm-offset-2 col-sm-8 business-card-wrapper'"
-            (click)="goToBusinessCardDetail(i)">
-        </app-business-card>
+    <div class="row content-row">
+        <div class="col-sm-12">
+            <div class="row">
+                <app-business-card 
+                    *ngFor="let businessCard of businessData; let i = index;"
+                    [businessCard]="businessCard"
+                    [wrapperCssClass]="'col-sm-8 business-card-wrapper'"
+                    (click)="goToBusinessCardDetail(i)">
+                </app-business-card>
+            </div>
+        </div>
     </div>
 </div>

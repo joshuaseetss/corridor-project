@@ -1,12 +1,51 @@
-
-
-    <app-service-header></app-service-header>
-
-    <div class="landing-page-welcome" >
-        <h1 class="message">Build your home business with Corri</h1>
-        <br>
-        <div style="text-align: center;">
+<div class="hero-container row">
+    <div class="col-sm-12">
+        <div class="row header-row">
+            <h1 class="logo col-sm-2" routerLink="/">Corri</h1>
+            <ul class="top-right-nav-wrapper col-sm-10">
+                <li class="top-right-nav get-started">Get Started</li>
+                <li class="top-right-nav login" routerLink="/login-page">Login</li>
+            </ul>
+        </div>
+    
+        <div class="row hero-text-wrapper">
+            <h1 class="hero-text">
+                Build your business with Corri
+            </h1>
+        </div>
+    
+        <div class="row signup-button-wrapper">
             <button class="btn btn-primary" routerLink="/sign-up-page">Sign Up Now</button>
-            <h5>Already have an account? <a routerLink="/login-page">Log in as a provider now!</a></h5>
         </div>
     </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="row info-wrapper">
+        <p class="info col-sm-8">
+            Corri is a platform that empowers home based beauty services to build an audience online, connecting you with users and helping you build your brand.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <div class="figure">
+                <i class="material-icons">group</i>
+            </div>
+            <p class="title">Get Discovered By Customers</p>
+            <p class="desc">Setup a portfolio for customers to discover your services.</p>
+        </div>
+        <div class="col-sm-4">
+            <div class="figure">
+                <i class="material-icons">verified_user</i>
+            </div>
+            <p class="title">Build your brand</p>
+            <p class="desc">Build a brand with reviews from satisfied customers</p>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row signup-button-wrapper bottom">
+        <button class="btn btn-primary" routerLink="/login-page">Login</button>
+    </div>
+</div>

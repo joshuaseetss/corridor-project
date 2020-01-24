@@ -23,8 +23,10 @@ export class HairPageComponent implements OnInit {
       if (response.params && response.params.q) {
         this.providerService.fetchServiceProviderList({ category: response.params.q }).subscribe((response) => {
           this.businessData = response.data;
-          this.dataService.serviceProviderData = response.data;
+          this.dataService.setServiceProviderData(response.data);
         });
+      } else {
+        this.router.navigate(['/']);
       }
     });
   }
@@ -61,7 +63,8 @@ export class HairPageComponent implements OnInit {
 
   goToBusinessCardDetail(index: number) {
     localStorage.setItem('businessCardDetailObject', JSON.stringify(this.businessCards[index]));
+    localStorage.setItem('provider', this.businessData[index]['_id']);
     this.dataService.selectedProvider = index + '';
-    this.router.navigate(['/business-card-detail']);
+    this.router.navigate(['/business-card-detail/']);
   }
 }

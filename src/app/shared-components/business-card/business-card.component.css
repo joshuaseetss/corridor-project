@@ -1,20 +1,16 @@
 .business-card-wrapper {
     background-color: white;
-    padding: 10px 0;
-    margin-bottom: 20px;
     font-family: 'Fjord One', serif;
     cursor: pointer;
+    padding: 2rem;
+    margin: 0;
 }
 
 .business-card-wrapper img {
-    margin: 10px 0 10px 20px;
+    max-width: 100%;
 }
 
 .business-card-wrapper .info-wrapper {
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .business-card-wrapper .info-wrapper h3 {

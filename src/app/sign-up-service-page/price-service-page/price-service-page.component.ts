@@ -66,6 +66,9 @@ export class PriceServicePageComponent implements OnInit {
       userData.append('services', JSON.stringify({ name: service.name, price: service.price }));
     });
 
+    userData.append('avgRating', '0');
+    userData.append('noOfReviews', '0');
+
     this.authService.serviceProviderSignup(userData).subscribe(
       (response) => {
         if (response.success) {

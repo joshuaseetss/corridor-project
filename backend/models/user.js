@@ -17,7 +17,9 @@ const serviceProviderSchema = mongoose.Schema({
   tags:  { type: String },
   openingHours: { type: Array },
   portfolio: { type: Array },
-  services: { type: Array }
+  services: { type: Array },
+  avgRating: { type: String },
+  noOfReviews: { type: String }
 }, { collection: 'serviceProviders' });
 
 const customerSchema = mongoose.Schema({

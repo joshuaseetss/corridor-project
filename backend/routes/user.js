@@ -101,6 +101,10 @@ router.post('/serviceProviderLogin', (req, res, next) => {
         fetchedUser.openingHours[index] = JSON.parse(oh);
       });
 
+      fetchedUser.services.forEach((service, index) => {
+        fetchedUser.services[index] = JSON.parse(service);
+      });
+
       res.status(200).json({
         authToken: token,
         userData: fetchedUser,
@@ -134,14 +138,6 @@ router.post('/autoAuth', (req, res, next) => {
       if(!serviceProvider) {
         Customer.findOne({ email: userEmail })
         .then((customer) => {
-          customer.openingHours.forEach((oh, index) => {
-            customer.openingHours[index] = JSON.parse(oh);
-          });
-    
-          customer.services.forEach((service, index) => {
-            customer.services[index] = JSON.parse(service);
-          });
-    
           return res.status(200).json({
             userData: customer,
             expiresIn: 900
@@ -291,7 +287,7 @@ router.post('/updateProfile', multer({ storage: storage })
     uType = ServiceProvider;
   }
 
-  uType.findOne({ email: req.body.email })
+  uType.findOne({ email: userData.email })
     .then(user => {
       if(!user) {
         return res.status(200).json({
@@ -299,13 +295,19 @@ router.post('/updateProfile', multer({ storage: storage })
           message: 'User does not exist'
         });
       }
+
+      const url = req.protocol + '://' + req.get('host');
       
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.email = userData.email;
       user.phone = userData.phone;
 
-      const url = req.protocol + '://' + req.get('host');
+      if(req.files['profilePhoto'].length === 1) {
+        userData.profilePhoto = url + '/images/' + req.files['profilePhoto'][0].filename;
+      }
+
+      const imagePathArray = [];
 
       if(userData.userType === 'serviceProvider') {
         req.files['portfolio'].forEach(file => {
@@ -314,10 +316,6 @@ router.post('/updateProfile', multer({ storage: storage })
       
         userData.portfolio = imagePathArray;
     
-        if(req.files['profilePhoto'].length === 1) {
-          userData.profilePhoto = url + '/images/' + req.files['profilePhoto'][0].filename;
-        }
-
         user.name = userData.name;
         user.address = userData.address;
         user.postalCode = userData.postalCode;
@@ -326,10 +324,7 @@ router.post('/updateProfile', multer({ storage: storage })
         user.tags = userData.tags;
         user.openingHours = userData.openingHours;
         user.portfolio = userData.portfolio;
-        user.service1 = userData.service1;
-        user.service2 = userData.service2;
-        user.price1 = userData.price1;
-        user.price2 = userData.price2;
+        user.services = userData.services;
       } else {
         if(req.file) {
           user.profilePhoto = url + '/images/' + req.file.filename;
@@ -361,6 +356,7 @@ router.post('/updateProfile', multer({ storage: storage })
         });
     })
     .catch(error => {
+      console.log(error);
       return res.status(401).json({
         isUserValid: false,
         message: 'User does not exist'

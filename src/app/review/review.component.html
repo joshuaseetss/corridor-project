@@ -1,0 +1,50 @@
+<div class="review-container">
+  <form [formGroup]="reviewForm" (ngSubmit)="submitReview()" *ngIf="!reviewSuccess else successMessage">
+    <div class="row cross-button">
+      <i class="material-icons" (click)="dialogRef.close()">close</i>
+    </div>
+    <div class="row rating-container">
+      <div class="col-sm-8 rating-wrapper">
+        <ul class="rating">
+          <li class="rating-value" *ngFor="let star of starArray; let i = index;"
+            (click)="selectRating(i)">
+            <i class="material-icons">{{ star }}</i>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row upload-container">
+      <div class="upload-image">
+        <i class="material-icons" (click)="fileUpload.click()">photo_camera</i>
+        <p class="upload-label">Add Photo</p>
+        <input type="file" #fileUpload (change)="onImageUpload($event)">
+      </div>
+    </div>
+
+    <div class="row image-preview-container" *ngIf="isImageUploaded">
+      <div class="image-preview">
+        <img [src]="this.imagePreview" [alt]="" >
+      </div>
+    </div>
+
+    <div class="row review-desc-container">
+      <textarea class="col-sm-8" name="review-desc" placeholder="Leave Review" formControlName="reviewDesc"></textarea>
+    </div>
+
+    <div class="row submit-button-wrapper">
+      <button mat-raised-button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <ng-template #successMessage>
+    <div class="row success-wrapper">
+      <p>Your review has been submitted successfully!</p>
+    </div>
+
+    <div class="row close-button-wrapper">
+      <button mat-raised-button (click)="dialogRef.close()">Close</button>
+    </div>
+    
+  </ng-template>
+</div>

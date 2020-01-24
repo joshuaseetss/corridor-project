@@ -67,3 +67,7 @@ navbar-color {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+
+.navbar {
+    margin-bottom: 0;
+}
