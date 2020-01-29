@@ -64,13 +64,9 @@ export class BusinessCardDetailComponent implements OnInit {
   getData() {
     this.userData = this.authService.getUserData();
 
-    if(!this.userData) {
-      this.authService.logout();
-    }
-
     this.dataService.getReviews({ email: this.businessData.email }).subscribe(
-    (response) => {
-      this.reviews = response.data;
+      (response) => {
+        this.reviews = response.data;
     });
   }
 

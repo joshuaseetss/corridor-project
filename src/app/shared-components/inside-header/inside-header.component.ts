@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './inside-header.component.html',
   styleUrls: ['./inside-header.component.css']
 })
-export class InsideHeaderComponent implements OnInit, OnDestroy {
+export class InsideHeaderComponent implements OnInit {
 
   collapsed: false;
   private authStatusSub: Subscription;
@@ -27,10 +27,6 @@ export class InsideHeaderComponent implements OnInit, OnDestroy {
       this.userData = this.authService.getUserData();
       this.firstName = this.userData && this.userData.firstName;
     });
-  }
-
-  ngOnDestroy() {
-    this.authStatusSub.unsubscribe();
   }
 
   logout() {
